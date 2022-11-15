@@ -1,1 +1,8 @@
 # Tetris-project
+
+REGLES DU JEU :
+Tetris met le joueur au défi de réaliser des lignes complètes en déplaçant des pièces de formes différentes,qui défilent depuis le haut jusqu'au bas de l'écran. Les lignes complétées disparaissent tout en rapportant des points et le joueur peut de nouveau remplir les cases libérées. Le jeu n'a pas de fin : le joueur perd la partie lorsqu'une forme reste bloqué en haut.
+
+Je me suis grandement aidé d'une vidéo youtube mais j'essaie peu a peu d'enlever pour mettre mon code.
+
+MVP:
