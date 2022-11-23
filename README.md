@@ -10,5 +10,18 @@ Problèmes que je peux rencontrer :
 
 Je peux faire la grille facilement, mais je peux avoir du mal à programmer les règles du jeu
 je peux avoir du mal à programmer un compteur du nombre de la population.
-MVP: Blocs qui défilent + blocs qui disparaissent en s'alignant + Game OVer
+MVP: Blocs qui défilent + blocs qui disparaissent en s'alignant + Game Over
+
+Cahier journal : 
+
+a(bandon d'une grande partie du précédent code car ne marchait pas(
+
+
+Jour 1 : début du  nouveau projet --) recherches pour savoir comment je vais réaliser mon projet (avec quelles fonction etc..) + création de la fenêtre
+Jour 2: création des blocs
+jour 5: création de la grille
+jour 8: création du score + fonction main
+
+
+
 
