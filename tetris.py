@@ -221,6 +221,56 @@ def draw_window(surface):
     font = pygame.font.SysFont('comicsans', 60)
     label = font.render('T E T R I S - T A N', 1, (255, 255, 255))
     surface.blit(label, (top_left_x + play_width / 2 - (label.get_width() / 2), 0))
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
+            pygame.draw.rect(surface, grid[i][j], (top_left_x + j * 30, top_left_y + i * 30, 30, 30), 0)      
+    draw_grid(surface, 20, 10)
+    pygame.draw.rect(surface, (100, 100, 100), (top_left_x, top_left_y, play_width, play_height), 5)
+
+def main():
+    global grid
+    Score = [0]
+    locked_positions = {}  
+    grid = create_grid(locked_positions)
+
+    change_piece = False
+    run = True
+    current_piece = get_shape()
+    next_piece = get_shape()
+    clock = pygame.time.Clock()
+    fall_time = 0
+
+    while run:
+        fall_speed = 0.27
+
+        grid = create_grid(locked_positions)
+        fall_time += clock.get_rawtime()
+        clock.tick()
+
+        if fall_time / 1000 >= fall_speed:
+            fall_time = 0
+            current_piece.y += 1
+            if not (valid_space(current_piece, grid)) and current_piece.y > 0:
+                current_piece.y -= 1
+                change_piece = True
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+                pygame.display.quit()
+                quit()
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    current_piece.x -= 1
+                    if not valid_space(current_piece, grid):
+                        current_piece.x += 1
+
+                elif event.key == pygame.K_RIGHT:
+                    current_piece.x += 1
+                    if not valid_space(current_piece, grid):
+                        current_piece.x -= 1
+                elif event.key == pygame.K_UP:
                     # Pour effectuer une rotation sur une forme
                     current_piece.rotation = current_piece.rotation + 1 % len(current_piece.shape)
                     if not valid_space(current_piece, grid):
