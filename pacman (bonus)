@@ -1,0 +1,54 @@
+import pygame
+
+# Initialiser pygame
+pygame.init()
+
+# Définir les dimensions de la fenêtre
+window_width = 640
+window_height = 480
+
+# Créer une fenêtre
+window = pygame.display.set_mode((window_width, window_height))
+
+# Définir le titre de la fenêtre
+pygame.display.set_caption('Pac-Man')
+
+# Charger l'image de Pac-Man
+pacman_image = pygame.image.load('pacman.png')
+
+# Définir la position de départ de Pac-Man
+pacman_x = window_width / 2
+pacman_y = window_height / 2
+
+# Définir la vitesse de déplacement de Pac-Man
+pacman_speed = 5
+
+# Créer une boucle de jeu
+while True:
+    # Récupérer les événements de pygame
+    for event in pygame.event.get():
+        # Si l'utilisateur clique sur la croix de fermeture, quitter le jeu
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+
+    # Récupérer les entrées du clavier
+    keys = pygame.key.get_pressed()
+
+    # Si l'utilisateur appuie sur la flèche gauche, déplacer Pac-Man vers la gauche
+    if keys[pygame.K_LEFT]:
+        pacman_x -= pacman_speed
+    # Si l'utilisateur appuie sur la flèche droite, déplacer Pac-Man vers la droite
+    if keys[pygame.K_RIGHT]:
+        pacman_x += pacman_speed
+    # Si l'utilisateur appuie sur la flèche haut, déplacer Pac-Man vers le haut
+    if keys[pygame.K_UP]:
+        pacman_y -= pacman_speed
+    # Si l'utilisateur appuie sur la flèche bas, déplacer Pac-Man vers le bas
+    if keys[pygame.K_DOWN]:
+        pacman_y += pacman_speed
+
+    # Mettre à jour la fenêtre
+    window.fill((0, 0, 0))  # Remplir la fenêtre de noir
+    window.blit(pacman_image, (pacman_x, pacman_y))  # Dessiner Pac-Man à sa nouvelle position
+    pygame.display.update()  # Mettre à jour l'affichage
